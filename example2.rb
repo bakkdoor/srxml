@@ -10,11 +10,7 @@ xml = SRXML::XML.new
 
 xml.projects{
   @projects.each do |project|
-    xml.project{
-     xml.id project[:id]
-     xml.name project[:name] 
-     xml.description project[:description]
-    }
+    xml.project "some value in the project-node", :id => project[:id], :name => project[:name], :description => project[:description]
   end
 }
 

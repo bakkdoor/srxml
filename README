@@ -1,0 +1,55 @@
+=========================
+SRXML - Simple Ruby XML
+=========================
+  
+SRXML is a very (super, if you will!) lightweight xml generator for Ruby. No big magic here, it simply uses method_missing to create the tags. There is some plan to make it more useful. For Example being able to parse existing files etc. but there are probably better libraries to do that.
+If you simply want to create an xml file without the need for extra fancy formatting, SRXML could just be the deal for you!
+
+
+=========================
+LICENSE:
+
+SRXML is licensed under the terms of the GNU GPL v2.
+Play with it as much as you like, fork it and put the changes here back on github or so :)
+      
+=========================
+  
+
+==================================
+Short Example (from examble.rb):
+==================================
+   
+  require "sr_xml"
+
+  xml = SRXML::XML.new
+
+  xml.projects{
+    xml.project "okidoki"
+    xml.project("jajaja", :name => "wasgehtn", :id => "yo"){
+      xml.name "yo!"
+    }
+  }
+
+  puts xml.to_s
+    
+
+Will output the following:
+  
+  <?xml version="1.0" encoding="UTF-8"?><projects><project>okidoki</project><project name="wasgehtn" id="yo">jajaja<name>yo!</name></project></projects>
+
+
+You can also use some simple formatting:
+  
+  puts xml.to_s(:formatted)
+    
+Which will then give you something like this:
+  
+  <?xml version="1.0" encoding="UTF-8"?><projects>
+  <project>okidoki</project>
+  <project name="wasgehtn" id="yo">jajaja
+  <name>yo!</name>
+  </project>
+  </projects>
+  
+For more examples take a look in the example-files.
+  

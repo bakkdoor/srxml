@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><projects><project>okidoki</project><project name="wasgehtn" id="yo">jajaja<name>yo!</name></project></projects>
+<?xml version="1.0" encoding="UTF-8"?><projects><project><id>1</id><name>Project 1</name><description>This is a first test project!</description></project><project><id>2</id><name>Project 2</name><description>This is a second test project!</description></project><project><id>3</id><name>Project 3</name><description>This is a third test project!</description></project></projects>
