@@ -8,7 +8,7 @@ module SRXML
   class XML < BlankSlate
       
     def method_missing(method_name, *args)
-      @output ||= ""
+      @output ||= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
       @output << "<#{method_name}"
     
       attributes = []
@@ -34,25 +34,20 @@ module SRXML
       if block_given?
         @output << "[sep]"
         yield
-        @output << "[sep]"
       end
     
       @output << "</#{method_name}>"
+      @output << "[sep]"
     end
     
-    def to_s(option = false)
+    def to_s(option = :non_formatted)
       if option == :formatted
         # format here with newline etc.
+        indentation = 0
         @output.gsub("[sep]", "\n")
       else
         @output.gsub("[sep]", "")
       end
-    end
-    
-    private
-    
-    def output
-      
     end
   
   end
