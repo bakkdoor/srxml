@@ -24,7 +24,7 @@ Short Example (from examble.rb):
   xml = SRXML::XML.new
 
   xml.projects{
-    xml.project("project #1", :description => "some text", :id => 1){
+    xml.project(:name => "project #1", :description => "some text", :id => 1){
       xml.something_else "yo!"
     }
   }
@@ -34,7 +34,7 @@ Short Example (from examble.rb):
 
 Will output the following:
   
-  <?xml version="1.0" encoding="UTF-8"?><projects><project description="some text" id="1">project #1<something_else>yo!</something_else></project></projects>
+  <?xml version="1.0" encoding="UTF-8"?><projects><project name="project #1" description="some text" id="1"><something_else>yo!</something_else></project></projects>
 
 You can also use some simple formatting:
   
@@ -43,7 +43,7 @@ You can also use some simple formatting:
 Which will then give you something like this:
   
   <?xml version="1.0" encoding="UTF-8"?><projects>
-  <project description="some text" id="1">project #1
+  <project name="project #1" description="some text" id="1">
   <something_else>yo!</something_else>
   </project>
   </projects>
