@@ -6,13 +6,6 @@ module SRXML
 
 
   class XML < BlankSlate
-    attr_accessor :name, :value, :children, :attributes
-    def initialize(name, value = "", attributes = {})
-      @name = name
-      @value = value
-      @children = []
-      @attributes = attributes
-    end
       
     def method_missing(method_name, *args)
       @output ||= ""
@@ -39,40 +32,20 @@ module SRXML
       @output << ">#{value}"
     
       if block_given?
-        @output << "[<<sep>>]"
+        @output << "[sep]"
         yield
-        @output << "[<<sep>>]"
+        @output << "[sep]"
       end
     
       @output << "</#{method_name}>"
     end
     
-    def method_missing(method_name, *args)
-      
-      node = XML.new(method_name)
-
-      args.each do |a|
-      
-        if a.class != Hash
-          node.value = a 
-        else
-          node.attributes = a
-        end
-      end
-    
-      if block_given?
-        yield node
-      end
-    
-      @children << node
-    end
-    
     def to_s(option = false)
       if option == :formatted
         # format here with newline etc.
-        
+        @output.gsub("[sep]", "\n")
       else
-        
+        @output.gsub("[sep]", "")
       end
     end
     
