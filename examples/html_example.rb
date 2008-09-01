@@ -1,4 +1,4 @@
-require "sr_xml"
+require "srxml"
 
 xml = SRXML::XML.new :xml_tag => false
 

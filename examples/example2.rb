@@ -1,4 +1,4 @@
-require "sr_xml"
+require "srxml"
 
 @projects = []
 
@@ -8,10 +8,8 @@ require "sr_xml"
 
 xml = SRXML::XML.new
 
-xml.projects{
+puts xml.projects{
   @projects.each do |project|
     xml.project "some value in the project-node", :id => project[:id], :name => project[:name], :description => project[:description]
   end
-}
-
-puts xml.to_s
+}.to_s

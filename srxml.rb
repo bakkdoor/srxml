@@ -51,6 +51,8 @@ module SRXML
     
       @output << "</#{method_name}>"
       @output << @sep
+      
+      return self
     end
     
     def to_s(option = :non_formatted)
