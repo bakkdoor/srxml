@@ -6,9 +6,22 @@ module SRXML
 
 
   class XML < BlankSlate
+    
+    attr_reader :xml_tag, :sep
+    
+    def initialize(options = {})
+      @xml_tag = options[:xml_tag].nil? ? true : options[:xml_tag]
+      @sep = options[:sep] || "[sep]"
+      
+      if @xml_tag
+        @output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>#{@sep}"
+      else
+        @output = ""
+      end
+    end
+    
       
     def method_missing(method_name, *args)
-      @output ||= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>[sep]"
       @output << "<#{method_name}"
     
       attributes = []
@@ -32,21 +45,22 @@ module SRXML
       @output << ">#{value}"
     
       if block_given?
-        @output << "[sep]"
+        @output << @sep
         yield
       end
     
       @output << "</#{method_name}>"
-      @output << "[sep]"
+      @output << @sep
     end
     
     def to_s(option = :non_formatted)
       if option == :formatted
         # format here with newline etc.
-        indentation = 0
-        @output.gsub("[sep]", "\n")
+        @output.gsub(@sep, "\n")
+      elsif option == :keep_sep
+        @output
       else
-        @output.gsub("[sep]", "")
+        @output.gsub(@sep, "")
       end
     end
   
