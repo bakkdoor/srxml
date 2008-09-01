@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
      "test/test_helper.rb", "test/test_srxml.rb"]
    s.test_files = ["test/test_helper.rb", "test/test_srxml.rb"]
    s.extra_rdoc_files = ["README"]
+   s.rdoc_options = ["--main", "README"]
    s.requirements << 'none'
    s.require_path = 'lib'
 end
