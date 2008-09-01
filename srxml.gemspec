@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "srxml"
-  s.version  = "0.0.1"
-  s.date     = "2008-08-31"
+  s.version  = "0.0.2"
+  s.date     = "2008-09-01"
   s.summary  = "Simple Ruby XML Generator"
   s.email    = "bakkdoor@flasht.de"
   s.homepage = "http://github.com/bakkdoor/srxml"
@@ -9,13 +9,19 @@ Gem::Specification.new do |s|
   If you simply want to create an xml file without the need for extra fancy formatting, SRXML could just be the deal for you!"
   s.has_rdoc = false
   s.authors  = ["Christopher Bertels"]
-  s.files    = ["sr_xml.rb",
-		"README", 
+  s.files    = ["srxml.rb",
+		"README",
+		"Rakefile", 
 		"examples/example.rb",
 		"examples/example.xml",
 		"examples/example2.rb",
 		"examples/example2.xml"]
-  s.test_files = []
+  s.test_files = ["test/fixtures/friends.xml",
+		"test/fixtures/friends_formatted.xml",
+		"test/fixtures/projects.xml",
+		"test/fixtures/projects_formatted.xml",
+		"test_helper.rb",
+		"test_srxml.rb"]
   s.rdoc_options = ["--main", "README"]
   s.extra_rdoc_files = ["README"]
 end
