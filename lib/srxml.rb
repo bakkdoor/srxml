@@ -7,11 +7,14 @@ module SRXML
 
   class XML < BlankSlate
     
+    attr_accessor :singles # defines tags, which don't have a closing-tag (e.g. <br/>)
     attr_reader :xml_tag, :sep
     
     def initialize(options = {})
       @xml_tag = options[:xml_tag].nil? ? true : options[:xml_tag]
       @sep = options[:sep] || "<>"
+      
+      @singles = options[:singles] || []
       
       if @xml_tag
         @output = ["<?xml version=\"1.0\" encoding=\"UTF-8\"?>#{@sep}"]
@@ -40,16 +43,18 @@ module SRXML
       attributes.each do |a|
         @output << a
       end
-    
-      @output << ">#{value}"
+      @output << ">"
+      @output << "#{value}" unless @singles.include?(method_name)
     
       if block_given?
         @output << @sep
         @output << yield
       end
-    
-      @output << "</#{method_name}>"
-      @output << @sep
+      
+      unless @singles.include?(method_name)
+        @output << "</#{method_name}>"
+        @output << @sep
+      end
     end
     
     def to_s(option = :non_formatted)
