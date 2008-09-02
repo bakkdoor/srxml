@@ -49,7 +49,7 @@ class TestSRXML < Test::Unit::TestCase
   end
   
   def test_inner_string_output
-    xml = SRXML::XML.new :xml_tag => false
+    xml = SRXML::XML.new :xml => false
     
     xml.html{
       xml.head{

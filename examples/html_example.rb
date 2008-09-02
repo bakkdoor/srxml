@@ -1,6 +1,6 @@
 require "srxml"
 
-xml = SRXML::XML.new :xml_tag => false
+xml = SRXML::XML.new :xml => false
 
 xml.html{
   xml.head{
