@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
    s.name = "srxml"
    s.summary = "Simple Ruby XML Generator"
    s.description = %q{SRXML is a very (super, if you will!) lightweight xml generator for Ruby. No big magic here, it simply uses method_missing to create the tags. There is some plan to make it more useful. For Example being able to parse existing files etc. but there are probably better libraries to do that.If you simply want to create an xml file without the need for extra fancy formatting, SRXML could just be the deal for you!}
-   s.version = "0.0.2"
+   s.version = "0.0.3"
    s.date = "2008-09-01"
    s.author = "Christopher Bertels"
    s.email = "bakkdoor@flasht.de"
