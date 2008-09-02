@@ -109,13 +109,14 @@ module SRXML
     :keep_sep     # will leave seperator-string in place (probably non-valid xml then - mainly for debug purposes)
 =end
     def to_s(option = :non_formatted)
+      @output = @output.select{|x| x.class == String}
       if option == :formatted
         # format here with newline etc.
-        @output.select{|x| x.class == String}.join("").gsub(@sep, "\n")
+        @output.join("").gsub(@sep, "\n")
       elsif option == :keep_sep
         @output.join("")
       else
-        @output.select{|x| x.class == String}.join("").gsub(@sep, "")
+        @output.join("").gsub(@sep, "")
       end
     end
   
