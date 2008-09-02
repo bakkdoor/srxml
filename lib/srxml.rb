@@ -14,9 +14,9 @@ module SRXML
       @sep = options[:sep] || "<>"
       
       if @xml_tag
-        @output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>#{@sep}"
+        @output = ["<?xml version=\"1.0\" encoding=\"UTF-8\"?>#{@sep}"]
       else
-        @output = ""
+        @output = []
       end
     end
     
@@ -45,23 +45,21 @@ module SRXML
     
       if block_given?
         @output << @sep
-        yield
+        @output << yield
       end
     
       @output << "</#{method_name}>"
       @output << @sep
-      
-      return self
     end
     
     def to_s(option = :non_formatted)
       if option == :formatted
         # format here with newline etc.
-        @output.gsub(@sep, "\n")
+        @output.select{|x| x.class == String}.join("").gsub(@sep, "\n")
       elsif option == :keep_sep
-        @output
+        @output.join("")
       else
-        @output.gsub(@sep, "")
+        @output.select{|x| x.class == String}.join("").gsub(@sep, "")
       end
     end
   

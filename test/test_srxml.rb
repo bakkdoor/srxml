@@ -47,4 +47,22 @@ class TestSRXML < Test::Unit::TestCase
     assert_equal(fixture(:friends), xml.to_s)
     assert_equal(fixture(:friends_formatted), xml.to_s(:formatted))
   end
+  
+  def test_inner_string_output
+    xml = SRXML::XML.new :xml_tag => false
+    
+    xml.html{
+      xml.head{
+        xml.title "Title"
+      }
+      xml.body{
+        xml.div{
+          "OkiDoki"
+        }
+      }
+    }
+    
+    assert_equal(fixture("inner_string.html"), xml.to_s)
+    
+  end
 end
