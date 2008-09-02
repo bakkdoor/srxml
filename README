@@ -1,5 +1,6 @@
 =========================
 SRXML - Simple Ruby XML
+Created by Christopher Bertels (bakkdoor@flasht.de / http://github.com/bakkdoor/)
 =========================
   
 SRXML is a very (super, if you will!) lightweight xml generator for Ruby. No big magic here, it simply uses method_missing to create the tags. There is some plan to make it more useful. For Example being able to parse existing files etc. but there are probably better libraries to do that.

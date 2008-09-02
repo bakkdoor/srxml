@@ -13,3 +13,11 @@ rt = Rake::TestTask.new("test_units") do |t|
   t.pattern = "test/test_*.rb"
   t.verbose = true
 end
+
+desc "create rdoc in /doc"
+rd = Rake::RDocTask.new("doc") do |rd|
+  rd.main = "README"
+  rd.rdoc_files.include("README", "lib/*.rb")
+  rd.options << "--all"
+  rd.rdoc_dir = "rdoc"
+end

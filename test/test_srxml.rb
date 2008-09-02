@@ -48,7 +48,7 @@ class TestSRXML < Test::Unit::TestCase
     assert_equal(fixture(:friends_formatted), xml.to_s(:formatted))
   end
   
-  def test_inner_string_output
+  def test_inner_string_output_and_no_xml_tag
     xml = SRXML::XML.new :xml => false
     
     xml.html{
@@ -63,6 +63,5 @@ class TestSRXML < Test::Unit::TestCase
     }
     
     assert_equal(fixture("inner_string.html"), xml.to_s)
-    
   end
 end
