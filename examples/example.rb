@@ -1,4 +1,4 @@
-require "srxml"
+require "../lib/srxml"
 
 @projects = []
 

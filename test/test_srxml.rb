@@ -64,4 +64,33 @@ class TestSRXML < Test::Unit::TestCase
     
     assert_equal(fixture("inner_string.html"), xml.to_s)
   end
+  
+  def test_html_singles
+    html = SRXML::XML.new :xml => false, :html => true
+    assert_equal(SRXML::XML.html_singles, html.singles)
+  end
+  
+  
+  def test_html_output
+    html = SRXML::XML.new :xml => false, :html => true
+    
+    html.html{
+      html.head{
+        html.title "hello, world!"
+        html.link :rel => "bla", :href => "http://localhost/whatever", :title => "something here!"
+      }
+      html.body{
+        html.div(:style => "padding: 10em; font-size: 150%"){
+          html.p "hey, whats up"
+          html.br
+          html.p{
+            "nothing much, i guess!"
+          }
+        }
+      }
+    }
+    
+    assert_equal(fixture("test_html_output.html", :xml => false), html.to_s)
+  end
+  
 end

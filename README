@@ -6,6 +6,7 @@ Created by Christopher Bertels (bakkdoor@flasht.de / http://github.com/bakkdoor/
 SRXML is a very (super, if you will!) lightweight xml generator for Ruby. No big magic here, it simply uses method_missing to create the tags. There is some plan to make it more useful. For Example being able to parse existing files etc. but there are probably better libraries to do that.
 If you simply want to create an xml file without the need for extra fancy formatting, SRXML could just be the deal for you!
 
+Oh, by the way. It also supports html-output now.
 
 =========================
 LICENSE:
@@ -19,8 +20,9 @@ Play with it as much as you like, fork it and put the changes here back on githu
 ==================================
 Short Example (from examble.rb):
 ==================================
-   
-  require "sr_xml"
+  
+  require "rubygems"
+  require "srxml"
 
   xml = SRXML::XML.new
 
@@ -48,6 +50,32 @@ Which will then give you something like this:
   <something_else>yo!</something_else>
   </project>
   </projects>
+
+==================================
+Simple HTML generation:
+==================================
+
+SRXML now also supports html-output:
+  
+  require "rubygems"
+  require "srxml"
+  
+  html = SRXML::XML.new :xml => false, :html => true  # this will automatically set SRXML into 'html-mode',
+                                                      # knowing for example, that certain tags are single (no end tag) 
+  html.html{
+    html.head{
+      html.title "my title"
+    }
+    html.body{
+      html.div(:style => "padding:10em; font-size: 140%"){
+        "hello, world!"
+      }
+    }
+  }
+  
+  puts html.to_s
+
+Will output the expected html-output. 
   
 For more examples take a look in the example-files.
   
