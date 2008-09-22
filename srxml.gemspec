@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
    s.files = [ "README", "Rakefile", "lib/srxml.rb",
      "examples/example.rb", "examples/example.xml", "examples/example2.rb", "examples/example2.xml",
      "test/fixtures/friends.xml", "test/fixtures/friends_formatted.xml", "test/fixtures/inner_string.html.xml",
-     "test/fixtures/projects.xml", "test/fixtures/projects_formatted.xml", "test/fixtures/test_output_html"
+     "test/fixtures/projects.xml", "test/fixtures/projects_formatted.xml", "test/fixtures/test_output_html",
      "test/test_helper.rb", "test/test_srxml.rb"]
    s.test_files = ["test/test_helper.rb", "test/test_srxml.rb", "test/fixtures/friends.xml", "test/fixtures/friends_formatted.xml",
      "test/fixtures/inner_string.html.xml", "test/fixtures/projects.xml", "test/fixtures/projects_formatted.xml",
